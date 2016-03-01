@@ -14,7 +14,7 @@ func ws() {
 	r.Static("/static", "webroot/static")
 	r.GET("/", index)
 	r.GET("/ws", servews)
-	r.Run(":80")
+	r.Run()
 }
 
 func index(c *gin.Context) {
