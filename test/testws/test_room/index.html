@@ -8,7 +8,7 @@
     <pre id="output"></pre>
 
     <script>
-      url = 'ws://128.199.108.49:8080/ws';
+      url = 'ws://{{.hostserver}}:8080/ws';
       c = new WebSocket(url);
       
       send = function(data){
@@ -23,7 +23,7 @@
 
       c.onopen = function(){
         setInterval( 
-          function(){ send("ping") }
+          function(){ send({{.roomid}}) }
         , 1000 )
       }
     </script>
