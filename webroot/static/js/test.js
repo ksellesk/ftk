@@ -1,5 +1,4 @@
-
-      url = 'ws://{{.hostserver}}:8080/ws';
+      url = 'ws://10.14.37.137:8080/ws';
       c = new WebSocket(url);
       
       send = function(data){
@@ -14,6 +13,8 @@
 
       c.onopen = function(){
         setInterval( 
-          function(){ send({{.roomid}}) }
+          function(){ send("ping") }
         , 1000 )
       }
+
+
