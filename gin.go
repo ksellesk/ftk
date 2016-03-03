@@ -2,8 +2,6 @@ package main
 
 import "github.com/gin-gonic/gin"
 
-var hostserver = "10.14.37.137"
-
 func main() {
 	dbConn()
 	ws()
@@ -15,8 +13,8 @@ func ws() {
 	r.LoadHTMLGlob("webroot/templates/*.html")
 	r.Static("/static", "webroot/static")
 	r.GET("/", index)
-//	r.GET("/chat/:roomid", chatroom)
-	r.GET("/ws", servews)
+	r.GET("/chat/:roomid", chatroom)
+	r.GET("/ws/:roomid", servews)
 	r.Run()
 }
 
@@ -29,7 +27,6 @@ func index(c *gin.Context) {
 		"title": title,
 		"redis": firstget,
 		"roomid": "nearest",
-		"hostserver": hostserver,
 	})
 
 }
@@ -47,5 +44,6 @@ func chatroom(c *gin.Context) {
 
 
 func servews(c *gin.Context) {
-	wshandler(c.Writer, c.Request)
+	roomid := c.Param("roomid")
+	wshandler(c.Writer, c.Request, roomid)
 }

@@ -6,14 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <link rel="icon" href="static/test.ico">
+    <link rel="icon" href="/static/test.ico">
     <title>{{.title}}</title>
-    <link href="static/css/bootstrap.min.css" rel="stylesheet">
-    <link href="static/css/chat.css" rel="stylesheet">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/chat.css" rel="stylesheet">
+	    <script src="/static/js/jquery.min.js"></script>
 
   </head>
+  
   <body>
-
 <!--
     <div class="page-header">
       <h1>Talking to me</h1>
@@ -35,17 +36,61 @@
         <input class="inputMessage" placeholder="Type here..."/>
       </li>
     </ul>
-
 -->
 
-
     <h3>WebSocket Go</h3>
-    <pre id="output"></pre>
+	
+    <div id="output"></div>
 
-    <script src="static/js/test.js"></script>
-    <script src="static/js/jquery.min.js"></script>
+    <form id="form">
+      <input type="text" id="bb" size="64"/>
+      <input type="submit" value="Send" />
+    </form>
 
+      <script type="text/javascript">	
+ 
+      $(function() {
+
+        var bb = $("#bb");
+		
+        $("#form").submit(function() {
+		
+			if (!bb.val()) {
+				return false;
+			}
+			$("#output").append((new Date())+ " ==> "+bb.val()+"\n")
+			return false
+		});
+
+      });
+
+      </script>
+
+<!--
+      <script>
+
+      url = 'ws://10.14.37.137:8080/ws/{{.roomid}}';
+      c = new WebSocket(url);
+      
+      send = function(data){
+        $("#output").append((new Date())+ " ==> "+data+"\n")
+        c.send(data)
+      }
+
+      c.onmessage = function(msg){
+        $("#output").append((new Date())+ " <== "+msg.data+"\n")
+        console.log(msg)
+      }
+
+      c.onopen = function(){
+        setInterval( 
+          function(){ send("ping") }
+        , 1000 )
+      }
+      </script>
+
+-->
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="static/js/bootstrap.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
   </body>
 </html>
