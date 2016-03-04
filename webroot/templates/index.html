@@ -40,26 +40,26 @@
 
     <h3>WebSocket Go</h3>
 	
-    <div id="output"></div>
 
     <form id="form">
       <input type="text" id="bb" size="64"/>
       <input type="submit" value="Send" />
     </form>
+    <div id="output"></div>
 
       <script type="text/javascript">	
  
       $(function() {
 
-        var bb = $("#bb");
+        var bb = $("#bb")
 		
         $("#form").submit(function() {
 		
 			if (!bb.val()) {
 				return false;
 			}
-			$("#output").append((new Date())+ " ==> "+bb.val()+"\n")
-			return false
+			$("#output").append((new Date())+ " ==> "+bb.val()+"hehehehehhe");
+			return false;
 		});
 
       });
