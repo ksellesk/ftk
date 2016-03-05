@@ -16,6 +16,14 @@ func dbSet(key string, value string) {
 	client.Set(key, value)
 }
 
+func dbPop(key string) {
+	client.Lpush()
+}
+
+func dbPush(key string) {
+	client.Lpop()
+}
+
 func dbConn() {
 
 	var err error
