@@ -16,11 +16,11 @@ func dbSet(key string, value string) {
 	client.Set(key, value)
 }
 
-func dbPop(key string) {
+func dbPop(key string) (value string){
 	client.Lpush()
 }
 
-func dbPush(key string) {
+func dbPush(key string, value string) {
 	client.Lpop()
 }
 
