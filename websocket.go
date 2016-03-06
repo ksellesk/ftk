@@ -20,11 +20,11 @@ func wshandler(w http.ResponseWriter, r *http.Request, roomid string) {
 
 	for {
 		t, msg, err := conn.ReadMessage()
-//		dbSet("test"+roomid, string(msg))
+//		dbPop("test"+roomid, string(msg))
 		if err != nil {
 			break
 		}
-//		msg = []byte(dbGet("test"+roomid))
+//		msg = []byte(dbPush("test"+roomid))
 		conn.WriteMessage(t, msg)
 	}
 }
