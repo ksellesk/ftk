@@ -16,12 +16,12 @@ func dbSet(key string, value string) {
 	client.Set(key, value)
 }
 
-func dbPop(key string) (value string){
-	client.Lpush()
+func dbPop(key string) (value string) {
+	client.Lpop(key)
 }
 
 func dbPush(key string, value string) {
-	client.Lpop()
+	client.Lpush(key, value)
 }
 
 func dbConn() {
