@@ -17,7 +17,8 @@ func dbSet(key string, value string) {
 }
 
 func dbPop(key string) (value string) {
-	client.Lpop(key)
+	s, _ := client.Lpop(key)
+	return s
 }
 
 func dbPush(key string, value string) {
